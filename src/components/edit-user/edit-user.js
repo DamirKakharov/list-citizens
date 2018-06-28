@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { UserForm } from '../';
 import { editUser } from '../../actions/users';
@@ -18,10 +19,13 @@ const EditUser = props => (
     </div>
 );
 
-const mapStateToProps = (state, props) => {
-    return {
-        user: state.users.find(user => user.id === props.match.params.id),
-    };
+EditUser.propTypes = {
+    user: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(EditUser);
+export default connect(
+    (state, props) => ({
+        user: state.users.find(user => user.id === props.match.params.id),
+    }))(EditUser);

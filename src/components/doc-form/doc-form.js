@@ -1,6 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class DocrForm extends React.Component {
+    static propTypes = {
+        number: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        fromMake: PropTypes.string.isRequired,
+        dataEnd: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        buttonName: PropTypes.string.isRequired,
+        doc: PropTypes.object.isRequired,
+        onSubmitDoc: PropTypes.func.isRequired,
+
+        userId: PropTypes.string,
+
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -10,33 +24,33 @@ export default class DocrForm extends React.Component {
             dateStart: props.doc ? props.doc.dateStart : '',
             dataEnd: props.doc ? props.doc.dataEnd : '',
             userId: props.doc ? props.doc.userId : props.userId,
-            id: props.doc ? props.doc.id : props.userid,
+            id: props.doc ? props.doc.id : '',
             error: '',
         };
     }
     onNumberChange = (e) => {
         const number = e.target.value;
-        this.setState(() => ({ number: number }));
+        this.setState(() => ({ number }));
     }
 
     onTypeChange = (e) => {
         const type = e.target.value;
-        this.setState(() => ({ type: type }));
+        this.setState(() => ({ type }));
     }
 
     onFromMakeChange = (e) => {
         const fromMake = e.target.value;
-        this.setState(() => ({ fromMake: fromMake }));
+        this.setState(() => ({ fromMake }));
     }
 
     onDateStartChange = (e) => {
         const dateStart = (e.target.value);
-        this.setState(() => ({ dateStart: dateStart }));
+        this.setState(() => ({ dateStart }));
     }
 
     onDateEndChange = (e) => {
         const dataEnd = (e.target.value);
-        this.setState(() => ({ dataEnd: dataEnd }));
+        this.setState(() => ({ dataEnd }));
     }
 
     onSubmit = (e) => {
@@ -115,3 +129,7 @@ export default class DocrForm extends React.Component {
         );
     }
 }
+
+DocrForm.defaultProps = {
+    userId: '',
+};

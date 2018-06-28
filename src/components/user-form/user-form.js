@@ -1,6 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class UserForm extends React.Component {
+    static propTypes = {
+        buttonName: PropTypes.string.isRequired,
+        user: PropTypes.object.isRequired,
+        onSubmitUser: PropTypes.func.isRequired,
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -16,32 +22,32 @@ export default class UserForm extends React.Component {
 
     onNameChange = (e) => {
         const name = e.target.value;
-        this.setState(() => ({ name: name }));
+        this.setState(() => ({ name }));
     }
 
     onSurnameChange = (e) => {
         const surname = e.target.value;
-        this.setState(() => ({ surname: surname }));
+        this.setState(() => ({ surname }));
     }
 
     onPatronymicChange = (e) => {
         const patronymic = e.target.value;
-        this.setState(() => ({ patronymic: patronymic }));
+        this.setState(() => ({ patronymic }));
     }
 
     onBirthdayChange = (e) => {
         const birthday = (e.target.value);
-        this.setState(() => ({ birthday: birthday }));
+        this.setState(() => ({ birthday }));
     }
 
     onSexChange = (e) => {
         const sex = (e.target.value);
-        this.setState(() => ({ sex: sex }));
+        this.setState(() => ({ sex }));
     }
 
     onLocationChange = (e) => {
         const location = (e.target.value);
-        this.setState(() => ({ location: location }));
+        this.setState(() => ({ location }));
     }
     onSubmit = (e) => {
         e.preventDefault();
@@ -63,7 +69,7 @@ export default class UserForm extends React.Component {
                     birthday: this.state.birthday,
                     sex: this.state.sex,
                     location: this.state.location,
-                }
+                },
             );
         }
     }
@@ -108,22 +114,23 @@ export default class UserForm extends React.Component {
                     <br />
 
                     <p
-                        // className="input__sex"
                         onChange={this.onSexChange}
                     >
 
-                        <label>
+                        <label htmlFor="radio1">
                             <input
                                 type="radio"
                                 placeholder="Sex"
                                 name="select-sex"
                                 value="male"
+                                id="radio1"
                                 className="input__sex"
                             /> male
                         </label>
-                        <label>
+                        <label htmlFor="radio2">
                             <input
                                 type="radio"
+                                id="radio2"
                                 placeholder="Sex"
                                 name="select-sex"
                                 value="female"

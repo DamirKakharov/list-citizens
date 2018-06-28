@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 import { DocForm } from '../';
 import { editDoc } from '../../actions/docs';
@@ -25,6 +27,12 @@ const mapStateToProps = (state, props) => {
     return {
         doc: state.docs[userId].find(doc => doc.id === ids[0]),
     };
+};
+
+EditDoc.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    doc: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(EditDoc);

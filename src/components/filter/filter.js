@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { filterText } from '../../actions/filter';
 
@@ -12,14 +13,16 @@ class Filter extends React.Component {
             <div>
                 <input
                     type="text"
-                    placeholder='search'
-                    onChange={this.handleSearch}>
-                </input>
-
+                    placeholder="search"
+                    onChange={this.handleSearch}
+                />
             </div>
         );
     }
 }
+Filter.propTypes = {
+    filterText: PropTypes.func.isRequired,
+};
 
 export default connect(
     state => ({
