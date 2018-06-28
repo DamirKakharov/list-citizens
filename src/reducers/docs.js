@@ -6,20 +6,18 @@ export default (state = initialState, action) => {
     switch (action.type) {
     case ADD_DOCUMENT: {
         const { userId } = action.document;
-        if (!state[userId]) {
-            state[userId] = [];
-        }
         return {
             ...state,
             [userId]: [
-                ...state[userId],
+                ...(state[userId] ? state[userId] : []),
                 action.document,
             ],
         };
     }
     case REMOVE_DOCUMENT: {
         const { userId } = action;
-        return { ...state,
+        return {
+            ...state,
             [userId]: [
                 ...state[userId].filter(({ id }) => id !== action.id),
             ],
@@ -27,7 +25,8 @@ export default (state = initialState, action) => {
     }
     case EDIT_DOCUMENT: {
         const { userId } = action.updates;
-        return { ...state,
+        return {
+            ...state,
             [userId]: [
                 ...state[userId].map((doc) => {
                     if (doc.id === action.id) {

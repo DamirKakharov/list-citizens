@@ -1,7 +1,7 @@
 export default (users, filters, docs) => {
     let gg;
     if (users.length !== 0) {
-        gg = users.filter(user => {
+        gg = users.filter((user) => {
             const textMatch =
                 user.name.toLowerCase().includes(filters.toLowerCase()) ||
                 user.birthday.toLowerCase().includes(filters.toLowerCase()) ||
@@ -12,9 +12,9 @@ export default (users, filters, docs) => {
     }
     const ids = gg.map(g => g.id);
     const v = {};
-    for (let i = 0; i < ids.length; i++) {
+    for (let i = 0; i < ids.length; i += 1) {
         const { userId } = { userId: ids[i] };
-        if (docs[userId] !== undefined) { 
+        if (docs[userId] !== undefined) {
             v[userId] = docs[userId];
         }
     }
