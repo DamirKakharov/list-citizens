@@ -1,0 +1,19 @@
+.user {
+    &__item {
+        color: #C4C4C4;
+    }
+
+    &__button {
+        color: #C4C4C4;
+        font-size: 20px;
+        padding: 0 8px;
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    &:hover {
+        color: white;
+    }
+}

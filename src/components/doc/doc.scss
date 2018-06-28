@@ -1,0 +1,17 @@
+.doc {
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        color: #C4C4C4;
+        line-height: 3px;
+
+        &_button {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        &:hover {
+            color: white;
+        }
+    }
+}
